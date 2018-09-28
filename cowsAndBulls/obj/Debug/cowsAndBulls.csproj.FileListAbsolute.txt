@@ -1,0 +1,7 @@
+E:\Projects\cowsAndBulls\cowsAndBulls\bin\Debug\cowsAndBulls.exe.config
+E:\Projects\cowsAndBulls\cowsAndBulls\bin\Debug\cowsAndBulls.exe
+E:\Projects\cowsAndBulls\cowsAndBulls\bin\Debug\cowsAndBulls.pdb
+E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.csprojAssemblyReference.cache
+E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.csproj.CoreCompileInputs.cache
+E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.exe
+E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.pdb
