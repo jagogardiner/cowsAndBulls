@@ -92,16 +92,29 @@ namespace cowsAndBulls
                     bulls++;
                 }
             }
-            for(int a=1; a < 3; a++)
+            if(gen[0] == input[1])
             {
-                if(gen[0] == input[a])
-                {
-                    cows++;
-                }
+                cows++;
             }
-            for(int b=1; b < 3; b++)
+            if(gen[0] == input[2])
             {
-                
+                cows++;
+            }
+            if(gen[0] == input[3])
+            {
+                cows++;
+            }
+            if(gen[1] == input[0])
+            {
+                cows++;
+            }
+            if(gen[1] == input[2])
+            {
+                cows++;
+            }
+            if(gen[1]==input[3])
+            {
+                cows++;
             }
             return true;
         }
