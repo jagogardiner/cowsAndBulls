@@ -5,3 +5,10 @@ E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.csprojAssemblyRefer
 E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.csproj.CoreCompileInputs.cache
 E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.exe
 E:\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.pdb
+N:\Year 11\Computer Science\Projects\cowsAndBulls\cowsAndBulls\bin\Debug\cowsAndBulls.exe.config
+N:\Year 11\Computer Science\Projects\cowsAndBulls\cowsAndBulls\bin\Debug\cowsAndBulls.exe
+N:\Year 11\Computer Science\Projects\cowsAndBulls\cowsAndBulls\bin\Debug\cowsAndBulls.pdb
+N:\Year 11\Computer Science\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.csprojAssemblyReference.cache
+N:\Year 11\Computer Science\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.csproj.CoreCompileInputs.cache
+N:\Year 11\Computer Science\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.exe
+N:\Year 11\Computer Science\Projects\cowsAndBulls\cowsAndBulls\obj\Debug\cowsAndBulls.pdb
