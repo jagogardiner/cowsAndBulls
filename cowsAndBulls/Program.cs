@@ -99,9 +99,9 @@ namespace cowsAndBulls
             {
                 return true;
             }
-            foreach(int x in input)
+            for(int i = 0; i < 4; i++)
             {
-                if(gen[x] == input[x])
+                if (gen[i] == input[i])
                 {
                     bulls++;
                 }
@@ -156,11 +156,22 @@ namespace cowsAndBulls
             }
             return false;
         }
+        public int arrayToInt(int[] arr)
+        {
+            int fullnum = 0;
+            for (int c = 0; c < arr.Length; c++)
+            {
+                fullnum += arr[c] * Convert.ToInt32(Math.Pow(10, arr.Length - c - 1));
+            }
+            return fullnum;
+        }
         public void Guess()
         {
             // Guess() is the method where the player guesses the number.
             int[] number = generate4Digit(); // Where the number needed is stored.
             Console.WriteLine("Enter your guess! (4 digit number)");
+            int num = arrayToInt(number);
+            Console.WriteLine(num.ToString());
             int guess;
             while(!int.TryParse(Console.ReadLine(), out guess))
             {
@@ -179,8 +190,13 @@ namespace cowsAndBulls
                 Console.WriteLine("Entered number has a duplicate!\n");
                 Guess();
             }
-
-            // Checking over, now the game starts!
+            guesses++;
+            bool bull = compareAnswers(number, guessArr);
+            if(guess == num)
+            {
+                Console.WriteLine("Well done! You won, with "+ guesses +" guesses!");
+                Console.ReadKey();
+            }
         }
         static void Main(string[] args)
         {
