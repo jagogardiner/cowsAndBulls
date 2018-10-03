@@ -59,6 +59,27 @@ namespace cowsAndBulls
             }
             return randomDigit;
         }
+        public static bool ifAnyDuplicate(int[] array)
+        {
+            // Method used to check if any numbers in a 4 digit array are duplicates
+            if(array[0] == array[1] || array[0] == array[2] || array[0] == array[3])
+            {
+                return true;
+            }
+            if(array[1] == array[0] || array[1] == array[2] || array[1] == array[3])
+            {
+                return true;
+            }
+            if (array[2] == array[0] || array[2] == array[1] || array[2] == array[3])
+            {
+                return true;
+            }
+            if(array[3] == array[0] || array[3] == array[1] || array[3] == array[2])
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool checkDuplicate(int gen1, int gen2)
         {
             // checkDuplicate() is the method used for checking if the two inputs are equal.
@@ -73,17 +94,10 @@ namespace cowsAndBulls
         }
         public bool compareAnswers(int[] gen, int[] input)
         {
+            // compareAnswers() checks for cows and bulls.
             if(gen == input)
             {
                 return true;
-            }
-            if(gen[0] == input[0])
-            {
-                bulls++;
-            }
-            if(gen[0] == input[1])
-            {
-                cows++;
             }
             foreach(int x in input)
             {
@@ -116,30 +130,62 @@ namespace cowsAndBulls
             {
                 cows++;
             }
-            return true;
+            if(gen[2] == input[0])
+            {
+                cows++;
+            }
+            if(gen[2] == input[1])
+            {
+                cows++;
+            }
+            if(gen[2] == input[3])
+            {
+                cows++;
+            }
+            if(gen[3] == input[0])
+            {
+                cows++;
+            }
+            if(gen[3] == input[1])
+            {
+                cows++;
+            }
+            if(gen[3] == input[2])
+            {
+                cows++;
+            }
+            return false;
         }
         public void Guess()
         {
             // Guess() is the method where the player guesses the number.
             int[] number = generate4Digit(); // Where the number needed is stored.
-            Console.WriteLine("Enter your guess!");
+            Console.WriteLine("Enter your guess! (4 digit number)");
+            int guess;
+            while(!int.TryParse(Console.ReadLine(), out guess))
+            {
+                Console.WriteLine("Input is not an number!\n");
+            }
+            int[] guessArr = new int[3];
+            guessArr = Array.ConvertAll(guess.ToString().ToArray(), x => (int)x - 48);
+            if(guessArr.Length != 4)
+            {
+                Console.WriteLine("Number is not 4 digits!\n");
+                Guess();
+            }
+            bool check = ifAnyDuplicate(guessArr);
+            if(check)
+            {
+                Console.WriteLine("Entered number has a duplicate!\n");
+                Guess();
+            }
 
+            // Checking over, now the game starts!
         }
         static void Main(string[] args)
         {
-            int[] x = generate4Digit();
-            for(int i=0; i < 4; i++)
-            {
-                Console.WriteLine(x[i]);
-            }
-            int fullnum = 0;
-            for (int c = 0; c < x.Length; c++)
-            {
-                fullnum += x[c] * Convert.ToInt32(Math.Pow(10, x.Length - c - 1));
-            }
-            string con = fullnum.ToString();
-            Console.WriteLine(con);
-            Console.ReadKey();
+            Program prg = new Program();
+            prg.Guess();
         }
     }
 }
