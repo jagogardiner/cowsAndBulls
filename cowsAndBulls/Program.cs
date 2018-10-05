@@ -9,6 +9,8 @@ namespace cowsAndBulls
     class Program
     {
         // Variables needed for global use
+        static int[] generated;
+        static int gennum;
         int guesses = 0;
         int bulls = 0;
         int cows = 0;
@@ -92,13 +94,8 @@ namespace cowsAndBulls
                 return false;
             }
         }
-        public bool compareAnswers(int[] gen, int[] input)
+        public void compareAnswers(int[] gen, int[] input)
         {
-            // compareAnswers() checks for cows and bulls.
-            if(gen == input)
-            {
-                return true;
-            }
             for(int i = 0; i < 4; i++)
             {
                 if (gen[i] == input[i])
@@ -154,7 +151,6 @@ namespace cowsAndBulls
             {
                 cows++;
             }
-            return false;
         }
         public int arrayToInt(int[] arr)
         {
@@ -167,40 +163,56 @@ namespace cowsAndBulls
         }
         public void Guess()
         {
-            // Guess() is the method where the player guesses the number.
-            int[] number = generate4Digit(); // Where the number needed is stored.
-            Console.WriteLine("Enter your guess! (4 digit number)");
-            int num = arrayToInt(number);
-            Console.WriteLine(num.ToString());
-            int guess;
-            while(!int.TryParse(Console.ReadLine(), out guess))
+            // Guess() is where the player enters his/her guess.
+            Console.WriteLine("Enter your guess! (4 digit number), Type 'exit' to exit the game.");
+            Console.WriteLine(gennum.ToString()); // DEBUG
+            cows = 0; // Reset values to make sure no duplicates occur
+            bulls = 0;
+            int input;
+            string read = Console.ReadLine();
+            if(read == "exit" || read == "Exit")
             {
-                Console.WriteLine("Input is not an number!\n");
+                // Check to see if the user would like to exit the game.
+                Environment.Exit(0);
+            }
+            while (!Int32.TryParse(read, out input))
+            {
+                // Try to parse the string as integer, if it cannot the entered value is clearly not an integer.
+                Console.WriteLine("Input is not an integer!\n");
+                Guess();
             }
             int[] guessArr = new int[3];
-            guessArr = Array.ConvertAll(guess.ToString().ToArray(), x => (int)x - 48);
-            if(guessArr.Length != 4)
+            guessArr = Array.ConvertAll(input.ToString().ToArray(), x => (int)x - 48);
+            if (guessArr.Length != 4)
             {
                 Console.WriteLine("Number is not 4 digits!\n");
                 Guess();
             }
             bool check = ifAnyDuplicate(guessArr);
-            if(check)
+            if (check)
             {
                 Console.WriteLine("Entered number has a duplicate!\n");
                 Guess();
             }
-            guesses++;
-            bool bull = compareAnswers(number, guessArr);
-            if(guess == num)
+
+            // Checks over, start the game!
+            compareAnswers(generated, guessArr); // Check for cows and bulls.
+            if (gennum == input)
             {
-                Console.WriteLine("Well done! You won, with "+ guesses +" guesses!");
-                Console.ReadKey();
+                Console.WriteLine("Well done! You won with {0} guesses!", guesses);
+            }
+            else
+            {
+                guesses++;
+                Console.WriteLine("There are {0} bulls, and {1} cows.\n", bulls, cows);
+                Guess();
             }
         }
         static void Main(string[] args)
         {
             Program prg = new Program();
+            generated = generate4Digit();
+            gennum = prg.arrayToInt(generated);
             prg.Guess();
         }
     }
