@@ -8,7 +8,7 @@ namespace cowsAndBulls
 {
     class Program
     {
-        // Variables needed for global use
+        // Variables needed for global use.
         static int[] generated;
         static int gennum;
         int guesses = 0;
@@ -96,6 +96,7 @@ namespace cowsAndBulls
         }
         public void compareAnswers(int[] gen, int[] input)
         {
+            // compareAnswers() checks for bulls and cows from the generated number compared to the users input
             for(int i = 0; i < 4; i++)
             {
                 if (gen[i] == input[i])
@@ -165,7 +166,6 @@ namespace cowsAndBulls
         {
             // Guess() is where the player enters his/her guess.
             Console.WriteLine("Enter your guess! (4 digit number), Type 'exit' to exit the game.");
-            Console.WriteLine(gennum.ToString()); // DEBUG
             cows = 0; // Reset values to make sure no duplicates occur
             bulls = 0;
             int input;
@@ -211,7 +211,8 @@ namespace cowsAndBulls
         static void Main(string[] args)
         {
             Program prg = new Program();
-            generated = generate4Digit();
+            // Generate numbers on launch, due to the way Guess() works
+            generated = generate4Digit(); 
             gennum = prg.arrayToInt(generated);
             prg.Guess();
         }
